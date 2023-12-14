@@ -1,0 +1,48 @@
+<!--
+    Napisati HTML formu s pripadajućim JS kodom koji radi funkciju zbrajanja 2 broja koja
+    se unesu u prva2 polja a rezultat se nakon klika na dugme Zbroji prikaže u trećem polju:
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zbrajanje</title>
+</head>
+<body>
+    
+    <form id="zbrajanjaForma">
+        <label for="broj1">Unesite prvi broj: </label>
+        <input type="number" id="broj1" name="broj1" required>
+        <br>
+        <br>
+
+        <label for="broj2">Unesite drugi broj: </label>
+        <input type="number" id="broj2" name="broj2" required>
+        <br>
+        <br>
+
+        <button type="button" onclick="zbroji()">Zbroji</button>
+        <br>
+        <br>
+
+        <hr>
+
+        <label for="rezultat">Rezultat zbrajanja: </label>
+        <input type="text" id="rezultat" name="rezultat" readonly>
+    </form>
+
+    <script type="text/javascript">
+        function zbroji() {
+            var broj1 = document.getElementById('broj1').value;
+            var broj2 = document.getElementById('broj2').value;
+
+            var rezultat = parseFloat(broj1) + parseFloat(broj2);
+
+            document.getElementById('rezultat').value = rezultat
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!--
+    Napraviti HTML stranicu sljedeće funkcionalnosti:
+        - Stranica treba korisniku pružati funkcionalnost on-line kalkulatora.
+        - Funkcije kalkulatora trebaju biti zbrajanje, oduzimanje, množenje, dijeljene, sinus, kosinus, 
+          tanges, prirodni logaritam, logaritam po bazi 10, kvadriranje, kubiranje i potenciranje (koristiti JS matematičke funkcije).
+        - Rezultat operacije vratiti u 'alert' prozoru. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator</title>
+</head>
+<body>
+
+    <form id="kalkulatorForma">
+        <label for="broj1">Unesite prvi broj: </label>
+        <input type="number" id="broj1" name="broj1" required>
+        <br><br>
+        
+        <label for="broj2">Unesite drugi broj: </label>
+        <input type="number" id="broj2" name="broj2" required>
+        <br><br>
+    
+        <div>
+            <button type="button" onclick="izracunaj('zbrajanje')">Zbrajanje</button>
+            <button type="button" onclick="izracunaj('oduzimanje')">Oduzimanje</button>
+            <button type="button" onclick="izracunaj('mnozenje')">Množenje</button>
+            <button type="button" onclick="izracunaj('dijeljenje')">Dijeljenje</button>
+        </div>
+        <br>
+    
+        <div>
+            <button type="button" onclick="izracunaj('sinus')">Sinus</button>
+            <button type="button" onclick="izracunaj('kosinus')">Kosinus</button>
+            <button type="button" onclick="izracunaj('tangens')">Tangens</button>
+            <button type="button" onclick="izracunaj('logaritam')">Prirodni logaritam</button>
+        </div>
+        <br>
+    
+        <div>
+            <button type="button" onclick="izracunaj('log10')">Logaritam po bazi 10</button>
+            <button type="button" onclick="izracunaj('kvadriranje')">Kvadriranje</button>
+            <button type="button" onclick="izracunaj('kubiranje')">Kubiranje</button>
+            <button type="button" onclick="izracunaj('potenciranje')">Potenciranje</button>
+        </div>
+        <br>
+    </form>
+
+    <script type="text/javascript">
+        function izracunaj(operacija) {
+            var broj1 = parseFloat(document.getElementById('broj1').value);
+            var broj2 = parseFloat(document.getElementById('broj2').value);
+            var rezultat;
+
+            switch (operacija) {
+                case 'zbrajanje':
+                    rezultat = broj1 + broj2;
+                    break;
+                case 'oduzimanje':
+                    rezultat = broj1 - broj2;
+                    break;
+                case 'mnozenje':
+                    rezultat = broj1 * broj2;
+                    break;
+                case 'dijeljenje':
+                    rezultat = broj1 / broj2;
+                    break;
+                case 'sinus':
+                    rezultat = Math.sin(broj1);
+                    break;
+                case 'kosinus':
+                    rezultat = Math.cos(broj1);
+                    break;
+                case 'tangens':
+                    rezultat = Math.tan(broj1);
+                    break;
+                case 'logaritam':
+                    rezultat = Math.log(broj1);
+                    break;
+                case 'log10':
+                    rezultat = Math.log10(broj1);
+                    break;
+                case 'kvadriranje':
+                    rezultat = Math.pow(broj1, 2);
+                    break;
+                case 'kubiranje':
+                    rezultat = Math.pow(broj1, 3);
+                    break;
+                case 'potenciranje':
+                    rezultat = Math.pow(broj1, broj2);
+                    break;
+                default:
+                    alert('Nepodržana operacija.');
+                    return;
+            }
+
+            alert('Rezultat operacije: ' + rezultat);
+        }
+    </script>
+
+</body>
+</html>

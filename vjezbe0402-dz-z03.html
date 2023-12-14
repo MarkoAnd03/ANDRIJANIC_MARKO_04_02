@@ -1,0 +1,53 @@
+<!--
+    Napravite HTML dokument s formom koja ima jedno tekstualno polje u koje upisujete ocjenu (od 1-5). Nakon unosa ocjene/brojke u polje pomoću JS koda
+    treba u alert prozoru/dijalogu ispisati o kojoj se ocjeni radi (1 – nedovoljan, ….. 5 – odličan). 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ocjena</title>
+</head>
+<body>
+    
+    <form id="ocjenaForma">
+        <label for="ocjena">Unesite ocjenu (1-5): </label>
+        <input type="text" id="ocjena" name="ocjena" maxlength="1" pattern="[1-5]" required>
+        <button type="button" onclick="ispisiOcjenu()">Provjeri ocjenu</button>
+    </form>
+
+    <script type="text/javascript"> 
+        function ispisiOcjenu() {
+            var ocjenaInput = document.getElementById('ocjena');
+            var ocjena = ocjenaInput.value;
+
+            if (/^[1-5]$/.test(ocjena)) {
+                switch (parseInt(ocjena)) {
+                    case 1:
+                        alert("Ocjena 1 - Nedovoljan");
+                        break;
+                    case 2:
+                        alert("Ocjena 2 - Dovoljan");
+                        break;
+                    case 3:
+                        alert("Ocjena 3 - Dobar");
+                        break;
+                    case 4:
+                        alert("Ocjena 4 - Vrlo dobar");
+                        break;
+                    case 5:
+                        alert("Ocjena 5 - Odličan");
+                        break;
+                }
+            } else {
+                alert("Neispravna ocjena! Molim unesite broj između 1 i 5.");
+            }
+
+            ocjenaInput.value = '';
+        }
+    </script>
+
+</body>
+</html>

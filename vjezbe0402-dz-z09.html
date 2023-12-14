@@ -1,0 +1,55 @@
+<!--
+    Napravit HTML dokument s JS kodom koji će  pri prvom učitavanju prikazati prekidač u stanju OFF(slika 1) i ugašenu žarulju. 
+    Nakon klika na prekidač 'žarulja se pali' i prikaz je kao na slici 2.
+    Pomoću JS koda možete putem prekidača upaliti/gasiti žarulju (slike za žarulju i prekidač (ON/OFF) su u prilogu).
+    Implementirati potrebni HTML i JS kod za realizaciju navedene funkcionalnosti.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zarulja</title>
+    <style>
+
+        #zarulja {
+            width: 250px;
+            height: auto;
+            display: block;
+            margin: 20px;
+        }
+
+        #prekidac {
+            width: 100px;
+            height: auto;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <h2>Žarulja kontrola</h2>
+
+    <img id="zarulja" src="zarulja_off_2.png" alt="Ugašena žarulja">
+
+    <img id="prekidac" src="off-removebg-preview.png" alt="Prekidč OFF" onclick="promijeniStanjeZarulje()">
+
+    <script>
+        function promijeniStanjeZarulje() {
+            var zaruljaElement = document.getElementById('zarulja');
+            var prekidacElement = document.getElementById('prekidac');
+
+            if (prekidacElement.src.includes('off-removebg-preview.png')) {
+                zaruljaElement.src = "zarulja_on_2.png";
+                prekidacElement.src = "on-removebg-preview.png";
+            } else {
+                zaruljaElement.src = "zarulja_off_2.png";
+                prekidacElement.src = "off-removebg-preview.png";
+            }
+        }
+    </script>
+
+</body>
+</html>

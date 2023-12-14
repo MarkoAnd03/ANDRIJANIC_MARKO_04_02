@@ -1,0 +1,57 @@
+<!--
+    Napravite HTML dokument s formom koja ima jedno tekstualno polje u koje upisujete ocjenu (od 1-5). Nakon unosa ocjene/brojke u polje pomoću JS koda
+    treba ispisati o kojoj se ocjeni radi (1 – nedovoljan, ….. 5 – odličan), u tijelu HTML dokumenta ispod forme, u odgovarajućem paragrafu. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unos Ocjene</title>
+</head>
+<body>
+    
+    <form id="ocjenaForma">
+        <label for="ocjena">Unesite ocjenu (1-5): </label>
+        <input type="text" id="ocjena" name="ocjena" maxlength="1" pattern="[1-5]" required>
+        <button type="button" onclick="ispisiOcjenu()">Provjeru ocjenu</button>
+    </form>
+
+    <p id="ispisOcjene"></p>
+
+    <script type="text/javascript">
+        function ispisiOcjenu() {
+            var ocjenaInput = document.getElementById('ocjena');
+            var ocjena = ocjenaInput.value;
+
+            var ispisOcjeneParagraf = document.getElementById('ispisOcjene');
+
+            if (/^[1-5]$/.test(ocjena)) {
+                switch(parseInt(ocjena)) {
+                    case 1:
+                        ispisOcjeneParagraf.innerText = "Ocjena: 1 - Nedovoljan";
+                        break;
+                    case 2:
+                        ispisOcjeneParagraf.innerText = "Ocjena: 2 - Dovoljan";
+                        break;
+                    case 3:
+                        ispisOcjeneParagraf.innerText = "Ocjena: 3 - Dobar";
+                        break;
+                    case 4:
+                        ispisOcjeneParagraf.innerText = "Ocjena: 4 - Vrlo Dobar";
+                        break;
+                    case 5:
+                        ispisOcjeneParagraf.innerText = "Ocjena: 5 - Odličan";
+                        break;
+                }
+            } else {
+                ispisOcjeneParagraf.innerText = "Unesite ispravnu ocjenu (1-5)."
+            }
+
+            ocjenaInput.value = '';
+        }
+    </script>
+
+</body>
+</html>

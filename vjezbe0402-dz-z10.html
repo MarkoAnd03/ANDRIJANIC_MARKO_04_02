@@ -1,0 +1,36 @@
+<!--
+    Dopunite kod ispod na način na klikom na prvi paragraf dodajte nove paragrafe teksta ispod default-nog paragrafa. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodaj paragraf</title>
+</head>
+<body>
+    
+    <p><a href="#">Kliknite ovdje da dodate novi paragraf tekst</a></p>
+    <p id="thisLocation">Novi paragraf teksta će se pojaviti ispod</p>
+    <p>Ovo je defaultni prvi paragraf teksta</p>
+
+    <script type="text/javascript">
+        function dodajNoviParagraf() {
+            var noviParagraf = document.createElement("p");
+
+            noviParagraf.textContent = "Novi paragraf teksta";
+
+            var ciljniElement = document.getElementById("thisLocation");
+
+            ciljniElement.parentNode.insertBefore(noviParagraf, ciljniElement.nextSibling);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var linkElement = document.querySelector('p a');
+            linkElement.addEventListener('click', dodajNoviParagraf);
+        })
+    </script>
+
+</body>
+</html>

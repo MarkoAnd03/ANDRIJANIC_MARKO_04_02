@@ -1,0 +1,60 @@
+<!--
+    Kreirajte novi HTML dokument sa pripadajućom formom sa sljedeće slike koju će korisnik unijeti datum i godinu rođenja.
+    U Javascriptu napraviti funkciju/program koji računa koliko godina ima korisnik i to mu javlja ispisom u 'alert' prozoru.
+    Program pozivati klikom na dugmesubmit ('Izračunaj').
+    Posebno pogledati Javascript funkcije za rad sa datumom (getYear, getMonth, getHours, getMinutes, getSeconds te leadingZero() )!
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izračun starosti</title>
+</head>
+<body>
+    
+    <form id="starostForma">
+        <label for="dan">Unesite dan rođenja (1-31): </label>
+        <input type="number" id="dan" name="dan" min="1" max="31" required>
+        <br><br>
+    
+        <label for="mjesec">Unesite mjesec rođenja (1-12): </label>
+        <input type="number" id="mjesec" name="mjesec" min="1" max="12" required>
+        <br><br>
+    
+        <label for="godina">Unesite godinu rođenja (npr 2003): </label>
+        <input type="number" id="godina" name="godina" required>
+        <br><br>
+    
+        <button type="button" onclick="izracunajStarost()">Izračunaj</button>
+    </form>
+
+    <script type="text/javascript">
+        function izracunajStarost() {
+            var dan = parseInt(document.getElementById('dan').value);
+            var mjesec = parseInt(document.getElementById('mjesec').value);
+            var godina = parseInt(document.getElementById('godina').value);
+
+            if (isNaN(dan) || isNaN(mjesec) || isNaN(godina) || dan < 1 || dan > 31 || mjesec < 1 || mjesec > 12) {
+                alert('unesite ispravan datum rođenja.');
+                return;
+            }
+
+            var datumRodjenja = new Date(godina, mjesec - 1, dan);
+
+            var trenutniDatum = new Date();
+            var trenutnaGodina = trenutniDatum.getFullYear();
+
+            var starost = trenutnaGodina - godina;
+
+            if (trenutniDatum.getMonth() < mjesec - 1 || (trenutniDatum.getMonth() === mjesec - 1 && trenutniDatum.getDate() < dan)) {
+                starost--;
+            }
+
+            alert('Vi imate ' + starost + ' godina.');
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!--
+    Napravite HTML dokument s  potrebnim JS dijelom koji će izračunati aritmetičku i geometrijsku  sredinu prirodnih brojeva skupa brojeva.
+    Skup brojeva se unese kroz prompt dijalog koji se korisniku prikaže nakon prvog učitavanja stranice
+    (brojevi odvojeni zarezom, npr 1, 4, 16 ili 1, 3, 6, 7, 18 i sl), a nakon toga izračunaju se aritmetička i geometrijska sredina i ispiše u html dokumentu.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aritmetička i Geometrijska sredina</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function aritmetickaSredina(niz) {
+            var suma = 0;
+            for (var i = 0; i < niz.length; i++) {
+                suma += parseInt(niz[i]);
+            }
+            return suma / niz.length;
+        }
+
+        function geometrijskaSredina(niz) {
+            var proizvod = 1;
+            for (var i = 0; i < niz.length; i++) {
+                proizvod *= parseInt(niz[i]);
+            }
+            return Math.pow(proizvod, 1 / niz.length);
+        }
+
+        function izracunajSredine() {
+            var input = prompt("Unesite brojeve odvojene zarezom, npr. 1, 4, 16:");
+
+            var nizBrojeva = input.split(',');
+
+            var aritmeticka = aritmetickaSredina(nizBrojeva);
+            var geometrijska = geometrijskaSredina(nizBrojeva);
+
+            document.body.innerHTML += "<p>Uneseni brojevi: " + nizBrojeva.join(', ') + "</p>";
+            document.body.innerHTML += "<p>Aritmetička sredina: " + aritmeticka + "</p>";
+            document.body.innerHTML += "<p>Geometrijska sredina: " + geometrijska + "</p>";
+        }
+
+        izracunajSredine();
+    </script>
+</body>
+</html>
